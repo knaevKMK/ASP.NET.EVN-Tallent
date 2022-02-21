@@ -1,0 +1,114 @@
+<div>
+
+    <h2 *ngIf="isEditMode"> Details</h2>
+    <h2 *ngIf="!isEditMode"> Create New Candidate</h2>
+    
+      <div class="alert alert-success" role="alert" *ngIf="successfulSave">
+        Person saved successfully!
+      </div>
+    
+      <div *ngIf="errors.Fatal" class="bg-danger" role="alert" >
+       {{errors.Fatal}}
+      </div>
+    
+      <form [formGroup]= "createForm" (ngSubmit)="onCreate()">
+    
+            <div class="form-group">
+                <label class="control-label">First Name</label>
+                <input formControlName="firstName" class="form-control"
+               />
+                 <div class="alert alert-danger" role="alert" *ngIf="errors.FirstName.length > 0">
+                     <ul>
+                       <li *ngFor="let error of errors.FirstName">
+                         {{error}}
+                       </li>
+                     </ul>
+                   </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label">Middle Name</label>
+                <input formControlName="middleName" class="form-control" />
+                <div class="alert alert-danger" role="alert" *ngIf="errors.MiddleName.length > 0">
+                  <ul>
+                    <li *ngFor="let error of errors.MiddleName">
+                      {{error}}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label">Last Name</label>
+                <input formControlName="lastName" class="form-control"
+                placeholder="Last Name ..."/>
+                <div class="alert alert-danger" role="alert" *ngIf="errors.LastName.length > 0">
+                  <ul>
+                    <li *ngFor="let error of errors.LastName">
+                      {{error}}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+    
+    
+              <div class="form-group">
+                <label class="control-label">Department Name </label>
+                <select formControlName="departmentName" class="form-control">
+                  <option selected> Select...</option>
+                  <option *ngFor="let depart of departments" value="{{depart['name']}}">{{depart['name']}}</option>
+    
+                </select>
+                <div class="alert alert-danger" role="alert" *ngIf="errors.DepartmentName.length > 0">
+                  <ul>
+                    <li *ngFor="let error of errors.DepartmentName">
+                      {{error}}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+    
+              <div class="form-group">
+                <label class="control-label">Education</label>
+                <input formControlName="education" class="form-control"
+                placeholder="Educaton / Level"/>
+                <div class="alert alert-danger" role="alert" *ngIf="errors.Education.length > 0">
+                  <ul>
+                    <li *ngFor="let error of errors.Education">
+                      {{error}}
+                    </li>
+                  </ul>
+                </div>
+            </div>
+    
+              <div class="form-group">
+                <label class="control-label">Birth Date</label>
+                <input formControlName="birthDate" class="form-control" value="{{birthDate}}" type="date" />
+                <div class="alert alert-danger" role="alert" *ngIf="errors.BirthDate.length > 0">
+                  <ul>
+                    <li *ngFor="let error of errors.BirthDate">
+                      {{error}}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+    
+    
+              <div class="form-group">
+                <label class="control-label">Score</label>
+                <input formControlName="score" class="form-control" type="number"/>
+                <div class="alert alert-danger" role="alert" *ngIf="errors.Score.length > 0">
+                  <ul>
+                    <li *ngFor="let error of errors.Score">
+                      {{error}}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+    
+    
+              <div class="form-group">
+                <input type="submit" *ngIf="isEditMode" value="Update" class="btn btn-primary" />
+                <input type="submit" *ngIf="!isEditMode" value="Create" class="btn btn-primary" />
+               <a href="/details/{{id}}" class="btn btn-primary">Cancel</a>
+              </div>
+        </form>
+    </div>

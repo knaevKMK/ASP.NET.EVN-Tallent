@@ -1,0 +1,68 @@
+<form class="d-flex" [formGroup]= "filterForm" (ngSubmit)="onFilter()">
+   
+
+    <div class="form-group">  
+        <label>Full Name:</label> <br>
+        <input formControlName="name" value="{{null}}" placeholder="Candidate Name..." />
+        <br>
+                <select formControlName="nameSort">
+                    <br>
+                    <option  value="0">A to Z</option>
+                    <option value="1">Z to A</option>
+            </select>
+    </div>
+
+<div class="form-group">
+    <label>Department:</label> <br>
+    <select formControlName="department">
+        <option selected value="Select..." >Select...</option>
+        <option *ngFor="let _department of departments"
+        value="{{_department.name}}">{{_department.name}}</option>
+        </select>
+        <br>
+        <select formControlName="departmentSort">
+            <option  value="0">A to Z</option>
+            <option value="1">Z to A</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label>Education:</label>
+    <input formControlName="education" value="{{null}}" class="form-control me-2" placeholder="Education..." />
+    <select formControlName="educationSort">
+        <option  value="0">A to Z</option>
+        <option value="1">Z to A</option>
+</select>
+</div>
+
+    <div class="form-group">
+        <label>Score:</label>
+        <input formControlName="score" type="number"
+        class="form-control me-2" placeholder="Score..." />
+        <select formControlName="arrowScore">
+            <option selected value="Current">Current</option>
+            <option value="0">Under</option>
+            <option value="1">Over</option>
+        </select>
+        <select formControlName="scoreSort">
+            <option  value="0">1 >> 9 </option>
+            <option  value="1">9 >> 1</option>
+    </select>
+    </div>
+
+        <div class="form-group">
+            <label >Birth Date:</label>
+            <input value="{{null}}" formControlName="birthYaer" type="date"
+            class="form-control me-2"  placeholder="Year of Birth" />
+            <select formControlName="arrowBirth">
+                <option value="Current" >Current</option>
+                <option value="0">Before</option>
+                <option value="1">After</option>
+            </select>
+            <select formControlName="birthYearSort">
+                <option  value="0">1 >> 9 </option>
+                <option  value="1">9 >> 1</option>
+        </select>
+        </div>
+        <button class="btn btn-outline-success" type="submit">Search</button>
+</form>

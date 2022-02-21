@@ -1,0 +1,114 @@
+<div>
+
+    <div class="nav-item dropdown">
+      <app-filter></app-filter>
+    </div>
+  
+    <div class="nav-item dropdown">
+        <a class="navbar-brand" href="/">Show All</a>
+    </div>
+      <h1 >All Candidates: </h1>
+      <table class="css-serial">
+        <thead>
+          <tr>
+            <th>
+              NO
+              <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+  
+              </div>
+            </th>
+            <th>
+              Full Name
+              <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                <a class="btn btn-primary active" href="/?query=sort%20name%20asc"> ↑ </a>
+                <a class="btn btn-primary active" href="/?query=sort%20name%20desc">↓</a>
+                </div>
+            </th>
+            <th>
+              Department
+              <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                <a class="btn btn-primary active" href="/?query=sort%20department%20asc"> ↑ </a>
+                <a class="btn btn-primary active" href="/?query=sort%20department%20desc">↓</a>
+                </div>
+            </th>
+            <th>
+              Education
+              <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                <a class="btn btn-primary active" href="/?query=sort%20education%20asc"> ↑ </a>
+                <a class="btn btn-primary active" href="/?query=sort%20education%20desc">↓</a>
+                </div>
+            </th>
+            <th>
+              Score (Grade)
+              <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                <a class="btn btn-primary active" href="/?query=sort%20score%20asc"> ↑ </a>
+                <a class="btn btn-primary active" href="/?query=sort%20score%20desc">↓</a>
+                </div>
+            </th>
+            <th>
+              Date of Birth
+              <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                <a class="btn btn-primary active" href="/?query=sort%20birthyear%20asc">↑</a>
+                <a class="btn btn-primary active" href="/?query=sort%20birthyear%20desc">↓</a>
+                </div>
+            </th>
+            <th>
+              CODE
+            </th>
+            <th>Options</th>
+          </tr>
+        </thead>
+        <tbody>
+     
+          
+          <tr  *ngFor="let user of users" >
+            <td>&nbsp;</td>
+  
+            <td>
+              {{user.fullName}}
+            </td>
+  
+            <td>
+              {{user.departmentName}}
+            </td>
+  
+            <td>
+              {{user.education}}
+            </td>
+  
+            <td>
+              {{user.score}}
+            </td>
+  
+            <td>
+              {{user.birthDate}}
+            </td>
+  
+            <td>
+              {{user.code}}
+  
+            </td>
+            <td>
+              <div class="nav-item dropdown">
+                  <a class="navbar-brand"  href="/details/{{user.id}}">Details</a>
+                  <a class="navbar-brand"  href="/edit/{{user.id}}">Edit</a>
+                  <button class="navbar-brand"  (click)="onDelete(user.id)">DELETE</button>
+              </div>
+            </td>
+          </tr>
+  
+        </tbody>
+      </table>
+  
+      <div class="container"*ngIf="users.length==0"> 
+        <div class="row">
+          <div class="col-sm"> 
+        <h3 *ngIf="mypage" >You've not added Candidates</h3>
+        <h3 *ngIf="!mypage" >No Candidates</h3>
+        <p class="navbar-brand">You can <a  href="/create">Add new Candidate</a></p>
+      </div>
+      </div>
+      </div>
+    </div>
+  
+  
